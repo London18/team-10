@@ -148,27 +148,57 @@ URI     : https://colorlib.com
                                         <div class="media-body">
                                             <h4 id="svc1title" class="card-title text-center"></h4>
                                             <p id="svc1exc" class="card-text"></p>
-                                            <h4 id="svc2title" class="card-title text-center"></h4>
-                                            <p id="svc2exc" class="card-text"></p>
-                                            <h4 id="svc3title" class="card-title text-center"></h4>
-                                            <p id="svc3exc" class="card-text"></p>
+                                            
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>                   
-        
-                        <script>
-                            var org={{org|safe}};
-                            for (i = 0; i < 3; i++) {
-                                title=org[i][0];
-                                link=org[i][1];
-                                exc=org[i][2];
-                                document.getElementById("svc"+(i+1)+"title").innerHTML += "<a href='"+link+"'>"+title+"</a>";
-                                document.getElementById("svc"+(i+1)+"exc").textContent = exc;
-                            }                                                
-                        </script>
-                    </div>    
+                    </div>
+                    <br/>
+                    <div class="row">
+                            <div class="col-12 col-lg-4">
+                                <div class="card features">
+                                    <div class="card-body" style="height:150px;">
+                                        <div class="media">                                    
+                                            <div class="media-body">
+                                                
+                                                <h4 id="svc2title" class="card-title text-center"></h4>
+                                                <p id="svc2exc" class="card-text"></p>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>                   
+                        </div>
+                        <br/>
+                        <div class="row">
+                                <div class="col-12 col-lg-4">
+                                    <div class="card features">
+                                        <div class="card-body" style="height:150px;">
+                                            <div class="media">                                    
+                                                <div class="media-body">
+                                                    
+                                                    <h4 id="svc3title" class="card-title text-center"></h4>
+                                                    <p id="svc3exc" class="card-text"></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>                   
+                
+                                <script>
+                                    var org={{org|safe}};
+                                    for (i = 0; i < 3; i++) {
+                                        title=org[i][0];
+                                        link=org[i][1];
+                                        exc=org[i][2];
+                                        document.getElementById("svc"+(i+1)+"title").innerHTML += "<a href='"+link+"'>"+title+"</a>";
+                                        document.getElementById("svc"+(i+1)+"exc").textContent = exc.slice(0,150);
+                                    }                                                
+                                </script>
+                            </div>    
     
             <!-- </div> -->
 
@@ -203,7 +233,7 @@ URI     : https://colorlib.com
                     var articles={{articles|safe}};
                     document.getElementById("article1img").src = articles[0][2];
                     document.getElementById("article1img").style="width:50px;height:50px;";
-                    document.getElementById("article1title").innerHTML = "<a href='"+articles[0][1]+"'>"+articles[0][0]+"</a>";
+                    document.getElementById("article1title").innerHTML = "<a href='http://"+articles[0][1]+"'>"+articles[0][0]+"</a>";
                     document.getElementById("article1exc").textContent = articles[0][3];
                 </script>
 
@@ -230,7 +260,7 @@ URI     : https://colorlib.com
     
                         document.getElementById("article2img").src = articles[1][2];
                         document.getElementById("article2img").style="width:50px;height:50px;";
-                        document.getElementById("article2title").innerHTML = "<a href='"+articles[1][1]+"'>"+articles[1][0]+"</a>";    
+                        document.getElementById("article2title").innerHTML = "<a href=http://'"+articles[1][1]+"'>"+articles[1][0]+"</a>";    
                         document.getElementById("article2exc").textContent = articles[1][3];
                     </script>
 

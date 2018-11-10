@@ -68,7 +68,7 @@ def search():
                     org.append([spec_org.get('name'), spec_org.get('website'), spec_org.get('serviceoffered')])
                 break
 
-        print(org)
+        print(query)
 
         
         articles = []
@@ -78,8 +78,8 @@ def search():
 
         article_parameters = {'search' : query, 'orderby' : 'relevance'}
 
-        
         article_response = json.loads(requests.get("https://www.themix.org.uk/wp-json/wp/v2/posts?", params = article_parameters).content.decode('utf-8'))
+        print(article_response)
         for item in article_response:
             articles.append([item.get('title').get('rendered'), item.get('link'), item.get('featured_image_url'), item.get('excerpt').get('rendered').replace('<p>','').replace('</p>', '')])   
         forum_response = json.loads(requests.get("https://community.themix.org.uk/search/autocomplete.json?term=" + query).content.decode('utf-8'))
