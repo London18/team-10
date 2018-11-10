@@ -1016,7 +1016,7 @@ header {
   }
   
   .s004 {
-    min-height: 60vh;
+    min-height: 15vh;
     display: -ms-flexbox;
     display: flex;
     -ms-flex-pack: center;
@@ -1032,7 +1032,7 @@ header {
 
   @media (max-width: 1001px){
     .s004 {
-        min-height: 70vh;
+        min-height: 15vh;
       }
       
   }
