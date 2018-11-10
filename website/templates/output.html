@@ -37,13 +37,45 @@
 
     <div class="row">
       <div class="col-md-8 offset-md-2">
-          <script>
-            var test = JSON.parse({{ test_output|safe}});
-            alert(test);
-            
-          </script>
+          
       </div>
     </div>
+
+    <div class="row">
+        <div class="col-md-8 offset-md-2 text-center" style="background-color:lightgray;">
+          <h2>Forums</h2>
+          <p id="forums"></p>
+          <script>
+            //document.getElementById("articles").innerHTML='hi';
+              var forums={{forums|safe}};            
+  
+              for (i = 0; i < 3; i++) { //Math.min(5, length(json_obj)); i++) { 
+                title=forums[i][0];
+                link=forums[i][1];
+                document.getElementById("forums").innerHTML += "<a href='"+link+"'>"+title+"</a>"+ '<br/>';
+              }
+            
+          </script>
+        </div>
+      </div>
+
+      <div class="row">
+          <div class="col-md-8 offset-md-2 text-center" style="background-color:lightgray;">
+            <h2>Articles</h2>
+            <p id="articles"></p>
+            <script>
+              //document.getElementById("articles").innerHTML='hi';
+                var articles={{articles|safe}};
+    
+                for (i = 0; i < 10; i++) { //Math.min(5, length(json_obj)); i++) { 
+                  title=articles[i][0];
+                  link=articles[i][1];
+                  document.getElementById("articles").innerHTML += "<a href='"+link+"'>"+title+"</a>"+ '<br/>';
+                }
+              
+            </script>
+          </div>
+        </div>
 
     <div class="row">
       <div class="col-md-8 offset-md-2 text-center">
