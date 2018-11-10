@@ -7,9 +7,8 @@ Created on Fri Nov  9 23:51:12 2018
 import requests
 import json
 
-query = 'drugs'
+query = search_string
 article_parameters = {'content' : query}
-forum_parameters = {'name': query}
 articles = {}
 forums = {}
 
@@ -20,5 +19,3 @@ for item in article_response:
 forum_response = json.loads(requests.get("https://community.themix.org.uk/search/autocomplete.json?term=" + query).content)
 for item in forum_response:
     forums[item.get('Title').replace('<mark>', '').replace('</mark>', '')] = item.get('Url')
-
-print(articles, forums)
