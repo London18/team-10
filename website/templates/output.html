@@ -133,6 +133,42 @@ URI     : https://colorlib.com
                         }                                                
                     </script>
                 </div>
+
+
+                <div class="forum-title text-center">
+                        <small>Services</small>
+                </div>
+    
+    
+                <div class="row">
+                        <div class="col-12 col-lg-4">
+                            <div class="card features">
+                                <div class="card-body" style="height:150px;">
+                                    <div class="media">                                    
+                                        <div class="media-body">
+                                            <h4 id="svc1title" class="card-title text-center"></h4>
+                                            <p id="svc1exc" class="card-text"></p>
+                                            <h4 id="svc2title" class="card-title text-center"></h4>
+                                            <p id="svc2exc" class="card-text"></p>
+                                            <h4 id="svc3title" class="card-title text-center"></h4>
+                                            <p id="svc3exc" class="card-text"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                   
+        
+                        <script>
+                            var org={{org|safe}};
+                            for (i = 0; i < 3; i++) {
+                                title=org[i][0];
+                                link=org[i][1];
+                                exc=org[i][2];
+                                document.getElementById("svc"+(i+1)+"title").innerHTML += "<a href='"+link+"'>"+title+"</a>";
+                                document.getElementById("svc"+(i+1)+"exc").textContent = exc;
+                            }                                                
+                        </script>
+                    </div>    
     
             <!-- </div> -->
 
