@@ -56,15 +56,15 @@ def search():
         ###### non-word2vec ######
 
         query=search_string
-        orgs = {1: 'abuse', 2: 'bereavement', 3: 'care', 4: 'careers', 4: 'study', 5: 'child', 6: 'Disability', 7: 'domestic', 8: 'drugs', 8: 'alcohol', 9: 'relationships', 10: 'health', 11: 'housing', 12: 'legal', 13: 'mental_health', 14: 'money', 15: 'sexual', 16: 'sexuality', 17: 'self'}
+        orgs = {1: 'abuse', 2: 'bereavement', 3: 'care', 4: 'careers', 5: 'child', 6: 'Disability', 7: 'domestic', 8: 'drugs',  9: 'relationships', 10: 'health', 11: 'housing', 12: 'legal', 13: 'mental_health', 14: 'money', 15: 'sexual', 16: 'sexuality', 17: 'self'}
         org = []
         for key, value in orgs.items():
             print(key,value)
             if value == query:
                 
-                org_response = json.loads(requests.get('https://tyt992fym8.execute-api.eu-west-2.amazonaws.com/prod/organisations?norg=1&lat=51.507351&long=-0.127758&distance=500&unit=m&>&cat=' + str(key) + '&limit=3').content).get('results')
+                org_response = json.loads(requests.get('https://tyt992fym8.execute-api.eu-west-2.amazonaws.com/prod/organisations?norg=1&lat=51.507351&long=-0.127758&distance=500&unit=m&>&cat=' + str(key) + '&limit=3').content.decode('utf-8')).get('results')
                 for item in org_response:
-                    spec_org = json.loads(requests.get('https://tyt992fym8.execute-api.eu-west-2.amazonaws.com/prod/organisations/' + str(item.get('orgid'))).content)
+                    spec_org = json.loads(requests.get('https://tyt992fym8.execute-api.eu-west-2.amazonaws.com/prod/organisations/' + str(item.get('orgid'))).content.decode('utf-8'))
                     org.append([spec_org.get('name'), spec_org.get('website'), spec_org.get('serviceoffered')])
                 break
 
