@@ -1,0 +1,124 @@
+<html>
+  <head>
+
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+      <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="author" content="colorlib.com">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,800" rel="stylesheet" />
+    <link href="./static/css/main.css" rel="stylesheet" />
+
+    <style type="text/css" id="custom-background-css">
+      body {
+          background-color: #f3f3f3;
+          background-image: url("https://cdn.themix.org.uk/uploads/2018/04/background-5.jpg");
+          background-position: center top;
+          background-size: auto;
+          background-repeat: no-repeat;
+          background-attachment: scroll;
+      }
+  </style>
+
+  </head>
+  <body>
+
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <img src="https://www.themix.org.uk/wp-content/themes/connected/images/TheMix_logo.png"/>
+      </div>
+    </div>
+    
+
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+          
+      </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8 offset-md-2 text-center" style="background-color:lightgray;">
+          <h2>Forums</h2>
+          <p id="forums"></p>
+          <script>
+            //document.getElementById("articles").innerHTML='hi';
+              var forums={{forums|safe}};            
+  
+              for (i = 0; i < 3; i++) { //Math.min(5, length(json_obj)); i++) { 
+                title=forums[i][0];
+                link=forums[i][1];
+                document.getElementById("forums").innerHTML += "<a href='"+link+"'>"+title+"</a>"+ '<br/>';
+              }
+            
+          </script>
+        </div>
+      </div>
+
+      <div class="row">
+          <div class="col-md-8 offset-md-2 text-center" style="background-color:lightgray;">
+            <h2>Articles</h2>
+            <p id="articles"></p>
+            <script>
+              //document.getElementById("articles").innerHTML='hi';
+                var articles={{articles|safe}};
+    
+                for (i = 0; i < 10; i++) { //Math.min(5, length(json_obj)); i++) { 
+                  title=articles[i][0];
+                  link=articles[i][1];
+                  excerpt=
+                  document.getElementById("articles").innerHTML += "<a href='"+link+"'>"+title+"</a>"+ '<br/>';
+                }
+              
+            </script>
+          </div>
+        </div>
+
+    <div class="row">
+      <div class="col-md-8 offset-md-2 text-center">
+        <div class="s004">
+          <form>
+            <fieldset>
+              <legend>Need a place to connect? Meet Alexa</legend>
+              <div class="inner-form">
+                <div class="input-field">
+                  <input class="form-control" id="choices-text-preset-values" type="text" placeholder="Type to search..." />
+                  <button class="btn-search" type="button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                      <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </fieldset>
+            </form>
+        </div>
+          
+
+
+        <img src="https://cdn-images-1.medium.com/max/1600/1*5zQ_G4mZhB-4q-V9PhI0xQ.jpeg" style="height:40vh"/>
+      </div>
+    </div>
+    
+    <script src="./static/js/extention/choices.js"></script>
+    <script>
+      var textPresetVal = new Choices('#choices-text-preset-values',
+      {
+        searchEnabled: false,
+        itemSelectText: '',
+        silent: true
+      });
+
+      // const choices = new Choices('[data-trigger]',
+      // {
+      //   searchEnabled: false,
+      //   itemSelectText: '',
+      // });
+
+    </script>
+  </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>
