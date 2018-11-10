@@ -24,11 +24,11 @@ def search():
 
         article_response = json.loads(requests.get("https://www.themix.org.uk/wp-json/wp/v2/posts?", params = article_parameters).content)
         for item in article_response:
-            articles.append([item.get('title').get('rendered'), item.get('link')])
+            articles.append([item.get('title').get('rendered'), item.get('link'), item.get('featured_image_url'), item.get('excerpt').get('rendered').replace('<p>','').replace('</p>', '')])
             
         forum_response = json.loads(requests.get("https://community.themix.org.uk/search/autocomplete.json?term=" + query).content)
         for item in forum_response:
-            forums.append([item.get('Title').replace('<mark>', '').replace('</mark>', ''), item.get('Url')])
+            forums.append([item.get('Title').replace('<mark>', '').replace('</mark>', ''), item.get('Url'), item.get('Summary').replace('<mark>', '').replace('</mark>', '')])
 
         #print("Hello")
     return render_template("output.html", articles=articles, forums=forums)
