@@ -59,6 +59,7 @@ def search():
         orgs = {1: 'abuse', 2: 'bereavement', 3: 'care', 4: 'careers', 4: 'study', 5: 'child', 6: 'Disability', 7: 'domestic', 8: 'drugs', 8: 'alcohol', 9: 'relationships', 10: 'health', 11: 'housing', 12: 'legal', 13: 'mental_health', 14: 'money', 15: 'sexual', 16: 'sexuality', 17: 'self'}
         org = []
         for key, value in orgs.items():
+            print(key,value)
             if value == query:
                 
                 org_response = json.loads(requests.get('https://tyt992fym8.execute-api.eu-west-2.amazonaws.com/prod/organisations?norg=1&lat=51.507351&long=-0.127758&distance=500&unit=m&>&cat=' + str(key) + '&limit=3').content).get('results')
@@ -66,6 +67,8 @@ def search():
                     spec_org = json.loads(requests.get('https://tyt992fym8.execute-api.eu-west-2.amazonaws.com/prod/organisations/' + str(item.get('orgid'))).content)
                     org.append([spec_org.get('name'), spec_org.get('website'), spec_org.get('serviceoffered')])
                 break
+
+        print(org)
 
         
         articles = []
@@ -76,10 +79,10 @@ def search():
         article_parameters = {'search' : query, 'orderby' : 'relevance'}
 
         
-        article_response = json.loads(requests.get("https://www.themix.org.uk/wp-json/wp/v2/posts?", params = article_parameters).content)
+        article_response = json.loads(requests.get("https://www.themix.org.uk/wp-json/wp/v2/posts?", params = article_parameters).content.decode('utf-8'))
         for item in article_response:
             articles.append([item.get('title').get('rendered'), item.get('link'), item.get('featured_image_url'), item.get('excerpt').get('rendered').replace('<p>','').replace('</p>', '')])   
-        forum_response = json.loads(requests.get("https://community.themix.org.uk/search/autocomplete.json?term=" + query).content)
+        forum_response = json.loads(requests.get("https://community.themix.org.uk/search/autocomplete.json?term=" + query).content.decode('utf-8'))
         for item in forum_response:
             forums.append([item.get('Title').replace('<mark>', '').replace('</mark>', ''), item.get('Url'), item.get('Summary').replace('<mark>', '').replace('</mark>', '')])
 
