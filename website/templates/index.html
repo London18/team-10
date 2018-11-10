@@ -147,7 +147,13 @@ URI     : https://colorlib.com
             function submit_giphy_search(element_id){
 
                 var input_search_string = document.getElementById(element_id).name;
-                document.getElementById('choices-text-preset-values').values= input_search_string;
+
+
+                var search_node = document.createElement("input");
+                search_node.name='search_string';
+                search_node.value=input_search_string;
+
+                document.getElementById('choices-text-preset-values').value= input_search_string;
                 document.forms['search_form'].submit();
             }
         
